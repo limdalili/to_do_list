@@ -42,8 +42,6 @@ const selectTask = (event) => {
   event.preventDefault();
   select.value = "all";
   if (input.value.trim() !== "") {
-    localStorage.setItem("id", tasksId);
-    localStorage.setItem("todoItems", JSON.stringify(arrTaskObjects));
     const taskObject = {
       value: input.value,
       date: new Date().toLocaleString().slice(0, -3),
@@ -54,6 +52,8 @@ const selectTask = (event) => {
     renderTasks(arrTaskObjects);
     tasksId++;
     input.value = "";
+    localStorage.setItem("id", tasksId);
+    localStorage.setItem("todoItems", JSON.stringify(arrTaskObjects));
   }
 };
 btn.addEventListener("click", selectTask);
